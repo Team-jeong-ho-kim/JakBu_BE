@@ -1,4 +1,4 @@
-package team.jeonghokim.zakbu.global.error.excpetion
+package team.jeonghokim.zakbu.global.error
 
 data class ErrorResponse(
     val status: Int,
