@@ -24,7 +24,7 @@ class GlobalExceptionHandler() {
         return ResponseEntity(
             ErrorResponse(
                 400,
-                e.bindingResult.allErrors[0].defaultMessage!!
+                e.bindingResult.allErrors[0].defaultMessage
             ),
             HttpStatus.BAD_REQUEST
         )
