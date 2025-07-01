@@ -1,0 +1,20 @@
+package team.jeonghokim.zakbu.domain.period.domain
+
+import jakarta.persistence.Entity
+import jakarta.persistence.EnumType
+import jakarta.persistence.Enumerated
+import team.jeonghokim.zakbu.domain.BaseUUIDEntity
+import team.jeonghokim.zakbu.domain.period.domain.type.Repeat
+import java.time.DayOfWeek
+import java.util.*
+
+@Entity(name = "tbl_period")
+class Period(
+    id: UUID?,
+
+    @Enumerated(EnumType.STRING)
+    var repeat: Repeat = Repeat.DAILY,
+
+    @Enumerated(EnumType.STRING)
+    var activeDay: DayOfWeek
+) : BaseUUIDEntity(id)
