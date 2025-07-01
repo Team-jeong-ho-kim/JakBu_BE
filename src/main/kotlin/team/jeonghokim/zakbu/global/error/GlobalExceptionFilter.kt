@@ -13,8 +13,7 @@ class GlobalExceptionFilter(
 ) : OncePerRequestFilter() {
     override fun doFilterInternal(
         request: HttpServletRequest,
-        response:
-        HttpServletResponse,
+        response: HttpServletResponse,
         filterChain: FilterChain
     ) {
         try {
