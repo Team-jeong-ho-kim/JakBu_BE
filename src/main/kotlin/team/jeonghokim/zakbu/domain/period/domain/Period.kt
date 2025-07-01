@@ -1,5 +1,6 @@
 package team.jeonghokim.zakbu.domain.period.domain
 
+import jakarta.persistence.Column
 import jakarta.persistence.Entity
 import jakarta.persistence.EnumType
 import jakarta.persistence.Enumerated
@@ -12,9 +13,11 @@ import java.util.*
 class Period(
     id: UUID?,
 
+    @Column(nullable = false)
     @Enumerated(EnumType.STRING)
     var repeat: Repeat = Repeat.DAILY,
 
+    @Column(nullable = false)
     @Enumerated(EnumType.STRING)
     var activeDay: DayOfWeek
 ) : BaseUUIDEntity(id)
