@@ -29,8 +29,7 @@ class GlobalExceptionFilter(
     private fun writeErrorResponse(
         response: HttpServletResponse,
         status: Int,
-        errorResponse:
-        ErrorResponse
+        errorResponse: ErrorResponse
     ) {
         response.status = status
         response.contentType = "application/json"
