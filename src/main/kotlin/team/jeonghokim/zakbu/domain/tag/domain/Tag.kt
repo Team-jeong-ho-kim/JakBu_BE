@@ -9,6 +9,6 @@ import java.util.UUID
 class Tag(
     id: UUID?,
 
-    @Column(name = "tag_name", nullable = false)
+    @Column(name = "tag_name", nullable = false, columnDefinition = "VARCHAR(10)")
     var tagName: String
 ) : BaseEntity(id)
