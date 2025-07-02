@@ -26,24 +26,24 @@ class JwtTokenProvider(
         jwtProperties.secretKey.toByteArray(),
         SignatureAlgorithm.HS256.jcaName)
 
-    private fun generateToken(id: UUID, type: String, exp: Long): String {
+    private fun generateToken(email: String, type: String, exp: Long): String {
         return Jwts.builder()
             .signWith(secretKeySpec)
-            .setSubject(id.toString())
+            .setSubject(email)
             .setHeaderParam("type", type)
             .setIssuedAt(Date())
             .setExpiration(Date(System.currentTimeMillis() + exp * 1000))
             .compact()
     }
 
-    fun generateAccessToken(id: UUID): String {
-        return generateToken(id, "access", jwtProperties.accessExp)
+    fun generateAccessToken(email: String): String {
+        return generateToken(email, "access", jwtProperties.accessExp)
     }
 
-    fun generateRefreshToken(id: UUID): String {
-        val refreshToken = generateToken(id, "refresh", jwtProperties.refreshExp)
+    fun generateRefreshToken(email: String): String {
+        val refreshToken = generateToken(email, "refresh", jwtProperties.refreshExp)
         refreshTokenRepository.save(
-            RefreshToken(id, refreshToken, jwtProperties.refreshExp)
+            RefreshToken(email, refreshToken, jwtProperties.refreshExp)
         )
         return refreshToken
     }
