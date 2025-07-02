@@ -12,13 +12,13 @@ class User(
     @GeneratedValue
     private val id: UUID? = null,
 
-    @Column(nullable = false, unique = true, columnDefinition = "VARCHAR(255)")
+    @Column(unique = true, nullable = false, columnDefinition = "VARCHAR(255)")
     private val email: String,
 
     @Column(nullable = false, columnDefinition = "CHAR(60)")
     private val password: String,
 
-    @Column(nullable = false, columnDefinition = "VARCHAR(10)")
+    @Column(unique = true, nullable = false, columnDefinition = "VARCHAR(10)")
     private val userName: String,
 
     @Column(nullable = true, columnDefinition = "VARCHAR(20)")
