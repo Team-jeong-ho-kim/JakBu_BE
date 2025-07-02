@@ -13,11 +13,11 @@ import java.util.*
 class Period(
     id: UUID?,
 
-    @Column(nullable = false)
+    @Column(nullable = false, columnDefinition = "VARCHAR(6)")
     @Enumerated(EnumType.STRING)
     var repeat: Repeat = Repeat.DAILY,
 
-    @Column(nullable = false)
-    @Enumerated(EnumType.STRING)
+    @Column(nullable = false, columnDefinition = "TINYINT(1)")
+    @Enumerated(EnumType.ORDINAL)
     var activeDay: DayOfWeek
 ) : BaseUUIDEntity(id)
