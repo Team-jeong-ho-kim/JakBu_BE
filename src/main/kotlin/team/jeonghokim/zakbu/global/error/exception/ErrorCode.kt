@@ -1,4 +1,4 @@
-package team.jeonghokim.zakbu.global.error.excpetion
+package team.jeonghokim.zakbu.global.error.exception
 
 enum class ErrorCode(
     val status: Int,
