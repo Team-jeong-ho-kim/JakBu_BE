@@ -21,7 +21,7 @@ class User(
     @Column(unique = true, nullable = false, columnDefinition = "VARCHAR(10)")
     private val userName: String,
 
-    @Column(nullable = true, columnDefinition = "VARCHAR(20)")
+    @Column(columnDefinition = "VARCHAR(20)")
     private val promise: String ?,
 
     @Column(nullable = false, columnDefinition = "VARCHAR(6)")
