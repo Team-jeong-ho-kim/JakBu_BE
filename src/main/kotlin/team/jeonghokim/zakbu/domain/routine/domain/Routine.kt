@@ -39,7 +39,7 @@ class Routine(
     var status: Status,
 
     @Column(name = "start_date", nullable = false)
-    var startDate: LocalDate = LocalDate.now(),
+    var startDate: LocalDate,
 
     @Column(name = "is_completed", nullable = false)
     var isCompleted: Boolean = false,
