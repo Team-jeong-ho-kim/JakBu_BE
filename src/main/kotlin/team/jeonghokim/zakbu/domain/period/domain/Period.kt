@@ -15,7 +15,7 @@ import java.util.*
 class Period(
     id: UUID?,
 
-    @Column(nullable = false, columnDefinition = "VARCHAR(6)")
+    @Column(name = "`repeat`", nullable = false, columnDefinition = "VARCHAR(7)")
     @Enumerated(EnumType.STRING)
     var repeat: Repeat = Repeat.DAILY,
 
