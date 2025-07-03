@@ -5,15 +5,12 @@ import jakarta.persistence.Column
 import jakarta.persistence.Entity
 import jakarta.persistence.EnumType
 import jakarta.persistence.Enumerated
-import jakarta.persistence.FetchType
 import jakarta.persistence.JoinColumn
-import jakarta.persistence.OneToMany
 import jakarta.persistence.OneToOne
 import team.jeonghokim.zakbu.domain.BaseEntity
 import team.jeonghokim.zakbu.domain.period.domain.Period
 import team.jeonghokim.zakbu.domain.routine.domain.type.Importance
 import team.jeonghokim.zakbu.domain.routine.domain.type.Status
-import team.jeonghokim.zakbu.domain.tag.domain.Tag
 import java.time.LocalDate
 import java.util.*
 
@@ -44,9 +41,8 @@ class Routine(
     @Column(name = "is_completed", nullable = false)
     var isCompleted: Boolean = false,
 
-    @OneToMany(fetch = FetchType.LAZY)
-    @JoinColumn(name = "routine_id")
-    val tags: List<Tag> = emptyList(),
+    @Column(name = "tag", nullable = false, columnDefinition = "VARCHAR(10)")
+    val tag: String,
 
     @OneToOne(cascade = [CascadeType.ALL], orphanRemoval = true)
     @JoinColumn(name = "period_id", nullable = false)
