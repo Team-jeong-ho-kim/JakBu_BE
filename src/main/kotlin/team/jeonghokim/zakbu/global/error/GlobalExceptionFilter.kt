@@ -5,7 +5,7 @@ import jakarta.servlet.FilterChain
 import jakarta.servlet.http.HttpServletRequest
 import jakarta.servlet.http.HttpServletResponse
 import org.springframework.web.filter.OncePerRequestFilter
-import team.jeonghokim.zakbu.global.error.excpetion.ZakBuException
+import team.jeonghokim.zakbu.global.error.exception.ZakBuException
 import java.io.IOException
 
 class GlobalExceptionFilter(

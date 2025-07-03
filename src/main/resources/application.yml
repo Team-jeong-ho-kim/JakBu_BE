@@ -14,3 +14,23 @@ spring:
         format_sql: ${JPA_FORMAT_SQL}
         dialect: org.hibernate.dialect.MySQLDialect
     open-in-view: false
+
+  main:
+    allow-bean-definition-overriding: true
+
+  jackson:
+    property-naming-strategy: SNAKE_CASE
+    serialization:
+      fail-on-empty-beans: false
+
+  jwt:
+    secretKey: ${JWT_SECRET}
+    header: ${HEADER}
+    prefix: ${PREFIX}
+    accessExp: ${ACCESS_EXP}
+    refreshExp: ${REFRESH_EXP}
+
+  data:
+    redis:
+      port: ${REDIS_PORT}
+      host: ${REDIS_HOST}
