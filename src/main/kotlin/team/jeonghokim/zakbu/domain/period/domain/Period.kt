@@ -13,7 +13,7 @@ import java.util.*
 
 @Entity(name = "tbl_period")
 class Period(
-    id: UUID?,
+    id: UUID? = null,
 
     @Column(name = "`repeat`", nullable = false, columnDefinition = "VARCHAR(7)")
     @Enumerated(EnumType.STRING)
