@@ -16,7 +16,7 @@ import java.util.*
 
 @Entity(name = "tbl_routine")
 class Routine(
-    id: UUID?,
+    id: UUID? = null,
 
     @Column(name = "routine_name", nullable = false, columnDefinition = "VARCHAR(10)")
     var routineName: String,
