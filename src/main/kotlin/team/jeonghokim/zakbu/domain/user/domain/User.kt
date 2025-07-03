@@ -33,8 +33,4 @@ class User(
     fun getEmail(): String {
         return email
     }
-
-    fun getPassword(): String {
-        return password
-    }
 }
