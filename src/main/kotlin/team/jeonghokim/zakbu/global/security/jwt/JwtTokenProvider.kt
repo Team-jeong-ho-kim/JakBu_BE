@@ -23,8 +23,8 @@ class JwtTokenProvider(
     private val refreshTokenRepository: RefreshTokenRepository
 ) {
     companion object {
-        const val ACCESS = "access"
-        const val REFRESH = "refresh"
+        private const val ACCESS = "access"
+        private const val REFRESH = "refresh"
     }
 
     private val secretKeySpec = SecretKeySpec(
