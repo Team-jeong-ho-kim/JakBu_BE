@@ -22,6 +22,11 @@ class JwtTokenProvider(
     private val authDetailsService: AuthDetailsService,
     private val refreshTokenRepository: RefreshTokenRepository
 ) {
+    companion object {
+        const val ACCESS = "access"
+        const val REFRESH = "refresh"
+    }
+
     private val secretKeySpec = SecretKeySpec(
         jwtProperties.secretKey.toByteArray(),
         SignatureAlgorithm.HS256.jcaName)
@@ -37,11 +42,11 @@ class JwtTokenProvider(
     }
 
     fun generateAccessToken(email: String): String {
-        return generateToken(email, "access", jwtProperties.accessExp)
+        return generateToken(email, ACCESS, jwtProperties.accessExp)
     }
 
     fun generateRefreshToken(email: String): String {
-        val refreshToken = generateToken(email, "refresh", jwtProperties.refreshExp)
+        val refreshToken = generateToken(email, REFRESH, jwtProperties.refreshExp)
         refreshTokenRepository.save(
             RefreshToken(email, refreshToken, jwtProperties.refreshExp)
         )
