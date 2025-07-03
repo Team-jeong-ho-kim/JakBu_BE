@@ -1,10 +1,12 @@
 package team.jeonghokim.zakbu.domain.period.domain
 
 import jakarta.persistence.Column
+import jakarta.persistence.Convert
 import jakarta.persistence.Entity
 import jakarta.persistence.EnumType
 import jakarta.persistence.Enumerated
 import team.jeonghokim.zakbu.domain.BaseUUIDEntity
+import team.jeonghokim.zakbu.domain.period.domain.converter.DayOfWeekConverter
 import team.jeonghokim.zakbu.domain.period.domain.type.Repeat
 import java.time.DayOfWeek
 import java.util.*
@@ -18,6 +20,6 @@ class Period(
     var repeat: Repeat = Repeat.DAILY,
 
     @Column(nullable = false, columnDefinition = "TINYINT(1)")
-    @Enumerated(EnumType.ORDINAL)
+    @Convert(converter = DayOfWeekConverter::class)
     var activeDay: DayOfWeek
 ) : BaseUUIDEntity(id)
