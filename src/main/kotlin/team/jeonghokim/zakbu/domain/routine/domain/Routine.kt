@@ -42,7 +42,7 @@ class Routine(
     var startDate: LocalDate = LocalDate.now(),
 
     @Column(name = "is_completed", nullable = false)
-    var isCompleted: Boolean?,
+    var isCompleted: Boolean = false,
 
     @OneToMany(fetch = FetchType.LAZY)
     @JoinColumn(name = "routine_id")
