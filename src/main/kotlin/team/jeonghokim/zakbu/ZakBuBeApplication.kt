@@ -7,5 +7,5 @@ import org.springframework.boot.runApplication
 class ZakBuBeApplication
 
 fun main(args: Array<String>) {
-	runApplication<ZakBuBeApplication>(*args)
+    runApplication<ZakBuBeApplication>(*args)
 }

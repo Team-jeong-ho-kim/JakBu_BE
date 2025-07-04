@@ -9,13 +9,12 @@ import team.jeonghokim.zakbu.global.error.exception.ZakBuException
 
 @RestControllerAdvice
 class GlobalExceptionHandler() {
-
     @ExceptionHandler(ZakBuException::class)
     fun handlingPickException(e: ZakBuException): ResponseEntity<ErrorResponse> {
         val code = e.errorCode
         return ResponseEntity(
             ErrorResponse(code.status, code.message),
-            HttpStatus.valueOf(code.status)
+            HttpStatus.valueOf(code.status),
         )
     }
 
@@ -24,9 +23,9 @@ class GlobalExceptionHandler() {
         return ResponseEntity(
             ErrorResponse(
                 400,
-                e.bindingResult.allErrors[0].defaultMessage
+                e.bindingResult.allErrors[0].defaultMessage,
             ),
-            HttpStatus.BAD_REQUEST
+            HttpStatus.BAD_REQUEST,
         )
     }
 }
