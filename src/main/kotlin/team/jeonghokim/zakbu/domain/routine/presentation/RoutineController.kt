@@ -1,6 +1,7 @@
 package team.jeonghokim.zakbu.domain.routine.presentation
 
 import org.springframework.web.bind.annotation.PostMapping
+import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
 import team.jeonghokim.zakbu.domain.routine.presentation.dto.request.CreateRoutineRequest
@@ -12,7 +13,7 @@ class RoutineController(
     private val createRoutineService: CreateRoutineService
 ) {
     @PostMapping
-    fun createRoutine(request: CreateRoutineRequest) {
+    fun createRoutine(@RequestBody request: CreateRoutineRequest) {
         createRoutineService.execute(request)
     }
 }
