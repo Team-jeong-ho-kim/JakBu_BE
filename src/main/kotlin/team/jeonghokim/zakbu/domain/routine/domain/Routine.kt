@@ -12,11 +12,9 @@ import team.jeonghokim.zakbu.domain.period.domain.Period
 import team.jeonghokim.zakbu.domain.routine.domain.type.Importance
 import team.jeonghokim.zakbu.domain.routine.domain.type.Status
 import java.time.LocalDate
-import java.util.*
 
 @Entity(name = "tbl_routine")
 class Routine(
-    id: UUID? = null,
     @Column(name = "routine_name", nullable = false, columnDefinition = "VARCHAR(10)")
     var routineName: String,
     @Column(name = "goal", nullable = false, columnDefinition = "VARCHAR(20)")
@@ -39,4 +37,4 @@ class Routine(
     @JoinColumn(name = "period_id", nullable = false)
     val period: Period,
     // user entity와 연관관계 설정
-) : BaseEntity(id)
+) : BaseEntity()
