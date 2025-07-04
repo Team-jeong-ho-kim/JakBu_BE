@@ -10,5 +10,5 @@ abstract class BaseEntity(
     @CreatedDate
     val createdAt: LocalDateTime = LocalDateTime.now(),
     @LastModifiedDate
-    val modifiedAt: LocalDateTime = LocalDateTime.now(),
+    val modifiedAt: LocalDateTime = LocalDateTime.now()
 ) : BaseUUIDEntity()

@@ -15,5 +15,5 @@ class Period(
     var repeat: Repeat = Repeat.DAILY,
     @Column(nullable = false, columnDefinition = "VARCHAR(9)")
     @Enumerated(EnumType.STRING)
-    var activeDay: DayOfWeek,
+    var activeDay: DayOfWeek
 ) : BaseUUIDEntity()

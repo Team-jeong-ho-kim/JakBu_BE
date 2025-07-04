@@ -9,7 +9,7 @@ import team.jeonghokim.zakbu.domain.routine.presentation.dto.request.CreateRouti
 
 @Service
 class CreateRoutineService(
-    private val routineRepository: RoutineRepository,
+    private val routineRepository: RoutineRepository
 ) {
     @Transactional
     fun execute(request: CreateRoutineRequest) {
@@ -17,7 +17,7 @@ class CreateRoutineService(
             request.period.run {
                 Period(
                     repeat = repeat,
-                    activeDay = activeDay,
+                    activeDay = activeDay
                 )
             }
 
@@ -32,7 +32,7 @@ class CreateRoutineService(
                     startDate = startDate,
                     isCompleted = isCompleted,
                     tag = tag,
-                    period = period,
+                    period = period
                 )
             }
 
