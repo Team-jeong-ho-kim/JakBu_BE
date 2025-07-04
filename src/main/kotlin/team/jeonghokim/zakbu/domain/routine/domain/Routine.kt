@@ -11,6 +11,7 @@ import team.jeonghokim.zakbu.domain.BaseTimeEntity
 import team.jeonghokim.zakbu.domain.period.domain.Period
 import team.jeonghokim.zakbu.domain.routine.domain.type.Importance
 import team.jeonghokim.zakbu.domain.routine.domain.type.Status
+import team.jeonghokim.zakbu.domain.routine.presentation.dto.request.ModifyRoutineRequest
 import java.time.LocalDate
 
 @Entity(name = "tbl_routine")
@@ -46,25 +47,18 @@ class Routine(
     var period: Period
     // user entity와 연관관계 설정
 ) : BaseTimeEntity() {
-    fun modifyRoutine(
-        routineName: String,
-        goal: String,
-        iconUrl: String,
-        importance: Importance,
-        status: Status,
-        startDate: LocalDate,
-        isCompleted: Boolean,
-        tag: String,
-        period: Period
-    ) {
-        this.routineName = routineName
-        this.goal = goal
-        this.iconUrl = iconUrl
-        this.importance = importance
-        this.status = status
-        this.startDate = startDate
-        this.isCompleted = isCompleted
-        this.tag = tag
-        this.period = period
-        }
+    fun modifyRoutine(request: ModifyRoutineRequest) {
+        this.routineName = request.routineName
+        this.goal = request.goal
+        this.iconUrl = request.iconUrl
+        this.importance = request.importance
+        this.status = request.status
+        this.startDate = request.startDate
+        this.isCompleted = request.isCompleted
+        this.tag = request.tag
+        this.period = Period(
+            repeat = request.period.repeat,
+            activeDay = request.period.activeDay
+        )
+    }
 }
