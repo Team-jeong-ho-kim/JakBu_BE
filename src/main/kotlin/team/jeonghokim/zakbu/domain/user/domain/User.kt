@@ -1,9 +1,7 @@
 package team.jeonghokim.zakbu.domain.user.domain
 
-import jakarta.persistence.Column
-import jakarta.persistence.Entity
-import jakarta.persistence.GeneratedValue
-import jakarta.persistence.Id
+import jakarta.persistence.*
+import team.jeonghokim.zakbu.global.oauth.provider.Oauth2Provider
 import java.util.*
 
 @Entity(name = "tbl_user")
@@ -21,8 +19,9 @@ class User(
     @Column(columnDefinition = "VARCHAR(20)")
     private val promise: String ?,
 
+    @Enumerated(EnumType.STRING)
     @Column(nullable = false, columnDefinition = "VARCHAR(6)")
-    private val oauthProvider: String,
+    private val oauthProvider: Oauth2Provider,
 
     @Column(nullable = false, columnDefinition = "CHAR(255)")
     private val deviceToken: String
