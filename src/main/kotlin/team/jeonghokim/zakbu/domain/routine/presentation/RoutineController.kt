@@ -9,8 +9,7 @@ import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.ResponseStatus
 import org.springframework.web.bind.annotation.RestController
-import team.jeonghokim.zakbu.domain.routine.presentation.dto.request.CreateRoutineRequest
-import team.jeonghokim.zakbu.domain.routine.presentation.dto.request.ModifyRoutineRequest
+import team.jeonghokim.zakbu.domain.routine.presentation.dto.request.RoutineRequest
 import team.jeonghokim.zakbu.domain.routine.service.CreateRoutineService
 import team.jeonghokim.zakbu.domain.routine.service.ModifyRoutineService
 import java.util.*
@@ -25,7 +24,7 @@ class RoutineController(
     @ResponseStatus(HttpStatus.CREATED)
     fun createRoutine(
         @RequestBody @Valid
-        request: CreateRoutineRequest
+        request: RoutineRequest
     ) {
         createRoutineService.execute(request)
     }
@@ -34,7 +33,7 @@ class RoutineController(
     @ResponseStatus(HttpStatus.NO_CONTENT)
     fun modifyRoutine(
         @PathVariable("routine-id") routineId: UUID,
-        @RequestBody @Valid request: ModifyRoutineRequest
+        @RequestBody @Valid request: RoutineRequest
     ) {
         modifyRoutineService.execute(routineId, request)
     }
