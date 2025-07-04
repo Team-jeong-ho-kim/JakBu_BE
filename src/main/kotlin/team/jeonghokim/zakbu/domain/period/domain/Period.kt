@@ -13,6 +13,7 @@ class Period(
     @Column(name = "`repeat`", nullable = false, columnDefinition = "VARCHAR(7)")
     @Enumerated(EnumType.STRING)
     var repeat: Repeat = Repeat.DAILY,
+
     @Column(nullable = false, columnDefinition = "VARCHAR(9)")
     @Enumerated(EnumType.STRING)
     var activeDay: DayOfWeek
