@@ -31,6 +31,7 @@ class RoutineController(
     }
 
     @PatchMapping("/{routine-id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
     fun modifyRoutine(
         @PathVariable("routine-id") routineId: UUID,
         @RequestBody @Valid request: ModifyRoutineRequest
