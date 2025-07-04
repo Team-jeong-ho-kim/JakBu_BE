@@ -14,3 +14,6 @@ spring:
         format_sql: ${JPA_FORMAT_SQL}
         dialect: org.hibernate.dialect.MySQLDialect
     open-in-view: false
+
+  jackson:
+    property-naming-strategy: SNAKE_CASE
