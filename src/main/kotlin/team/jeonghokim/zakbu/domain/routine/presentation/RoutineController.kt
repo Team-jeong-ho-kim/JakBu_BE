@@ -1,5 +1,6 @@
 package team.jeonghokim.zakbu.domain.routine.presentation
 
+import jakarta.validation.Valid
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RequestMapping
@@ -13,7 +14,7 @@ class RoutineController(
     private val createRoutineService: CreateRoutineService
 ) {
     @PostMapping
-    fun createRoutine(@RequestBody request: CreateRoutineRequest) {
+    fun createRoutine(@RequestBody @Valid request: CreateRoutineRequest) {
         createRoutineService.execute(request)
     }
 }
