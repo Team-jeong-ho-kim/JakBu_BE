@@ -17,7 +17,6 @@ class ModifyRoutineService(
             ?: throw RoutineNotFoundException
 
         routine.modifyRoutine(request)
-
         routineRepository.save(routine)
     }
 }
