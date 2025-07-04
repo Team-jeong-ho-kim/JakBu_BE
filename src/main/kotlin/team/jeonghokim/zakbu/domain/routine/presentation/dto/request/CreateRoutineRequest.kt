@@ -1,5 +1,6 @@
 package team.jeonghokim.zakbu.domain.routine.presentation.dto.request
 
+import com.fasterxml.jackson.annotation.JsonProperty
 import jakarta.validation.Valid
 import jakarta.validation.constraints.NotBlank
 import jakarta.validation.constraints.NotNull
@@ -14,6 +15,7 @@ import java.time.LocalDate
 data class CreateRoutineRequest(
     @field:NotBlank(message = "루틴 이름은 필수 입력 값입니다.")
     @field:Size(max = 10, message = "루틴 이름은 10자 이하로 입력해주세요.")
+    @JsonProperty("routine_name")
     val routineName: String,
     
     @field:NotBlank(message = "목표는 필수 입력 값입니다.")
@@ -25,6 +27,7 @@ data class CreateRoutineRequest(
         regexp = "^https?://.*",
         message = "유효한 URL 형식이어야 합니다."
     )
+    @JsonProperty("icon_url")
     val iconUrl: String,
     
     @field:NotNull(message = "중요도는 필수 선택 값입니다.")
@@ -34,8 +37,10 @@ data class CreateRoutineRequest(
     val status: Status,
     
     @field:NotNull(message = "시작일은 필수 입력 값입니다.")
+    @JsonProperty("start_date")
     val startDate: LocalDate,
-    
+
+    @JsonProperty("is_completed")
     val isCompleted: Boolean = false,
     
     @field:NotBlank(message = "태그는 필수 입력 값입니다.")
@@ -50,6 +55,7 @@ data class CreateRoutineRequest(
         val repeat: Repeat,
         
         @field:NotNull(message = "요일은 필수 선택 값입니다.")
+        @JsonProperty("active_day")
         val activeDay: DayOfWeek
     )
 }
