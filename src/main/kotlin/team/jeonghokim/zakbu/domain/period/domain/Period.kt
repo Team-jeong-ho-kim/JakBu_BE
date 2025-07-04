@@ -14,12 +14,10 @@ import java.util.*
 @Entity(name = "tbl_period")
 class Period(
     id: UUID? = null,
-
     @Column(name = "`repeat`", nullable = false, columnDefinition = "VARCHAR(7)")
     @Enumerated(EnumType.STRING)
     var repeat: Repeat = Repeat.DAILY,
-
     @Column(nullable = false, columnDefinition = "TINYINT(1)")
     @Convert(converter = DayOfWeekConverter::class)
-    var activeDay: DayOfWeek
+    var activeDay: DayOfWeek,
 ) : BaseUUIDEntity(id)

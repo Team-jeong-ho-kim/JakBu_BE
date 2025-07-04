@@ -6,7 +6,6 @@ import java.time.DayOfWeek
 
 @Converter
 internal class DayOfWeekConverter : AttributeConverter<DayOfWeek, Int> {
-
     override fun convertToDatabaseColumn(attribute: DayOfWeek): Int {
         return attribute.value
     }

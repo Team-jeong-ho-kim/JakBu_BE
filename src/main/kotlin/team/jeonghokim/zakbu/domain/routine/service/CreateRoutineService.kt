@@ -13,26 +13,28 @@ class CreateRoutineService(
 ) {
     @Transactional
     fun execute(request: CreateRoutineRequest) {
-        val period = request.period.run {
-            Period(
-                repeat = repeat,
-                activeDay = activeDay
-            )
-        }
+        val period =
+            request.period.run {
+                Period(
+                    repeat = repeat,
+                    activeDay = activeDay,
+                )
+            }
 
-        val routine = request.run {
-            Routine(
-                routineName = routineName,
-                goal = goal,
-                iconUrl = iconUrl,
-                importance = importance,
-                status = status,
-                startDate = startDate,
-                isCompleted = isCompleted,
-                tag = tag,
-                period = period
-            )
-        }
+        val routine =
+            request.run {
+                Routine(
+                    routineName = routineName,
+                    goal = goal,
+                    iconUrl = iconUrl,
+                    importance = importance,
+                    status = status,
+                    startDate = startDate,
+                    isCompleted = isCompleted,
+                    tag = tag,
+                    period = period,
+                )
+            }
 
         routineRepository.save(routine)
     }

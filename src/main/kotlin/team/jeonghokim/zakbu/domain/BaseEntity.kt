@@ -14,7 +14,7 @@ abstract class BaseEntity(
     @UuidGenerator
     @Column(
         columnDefinition = "BINARY(16)",
-        nullable = false
+        nullable = false,
     )
-    val id: UUID?
+    val id: UUID?,
 ) : BaseTimeEntity()

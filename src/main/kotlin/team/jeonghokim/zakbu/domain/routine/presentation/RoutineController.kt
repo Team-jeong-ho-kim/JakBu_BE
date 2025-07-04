@@ -13,11 +13,13 @@ import team.jeonghokim.zakbu.domain.routine.service.CreateRoutineService
 @RestController
 @RequestMapping("/routines")
 class RoutineController(
-    private val createRoutineService: CreateRoutineService
+    private val createRoutineService: CreateRoutineService,
 ) {
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    fun createRoutine(@RequestBody @Valid request: CreateRoutineRequest) {
+    fun createRoutine(
+        @RequestBody @Valid request: CreateRoutineRequest,
+    ) {
         createRoutineService.execute(request)
     }
 }

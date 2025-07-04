@@ -4,5 +4,5 @@ enum class Repeat {
     DAILY,
     WEEKLY,
     MONTHLY,
-    CUSTOM
+    CUSTOM,
 }
