@@ -2,18 +2,24 @@ package team.jeonghokim.zakbu.domain.routine.presentation
 
 import jakarta.validation.Valid
 import org.springframework.http.HttpStatus
+import org.springframework.web.bind.annotation.PatchMapping
+import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.ResponseStatus
 import org.springframework.web.bind.annotation.RestController
 import team.jeonghokim.zakbu.domain.routine.presentation.dto.request.CreateRoutineRequest
+import team.jeonghokim.zakbu.domain.routine.presentation.dto.request.ModifyRoutineRequest
 import team.jeonghokim.zakbu.domain.routine.service.CreateRoutineService
+import team.jeonghokim.zakbu.domain.routine.service.ModifyRoutineService
+import java.util.*
 
 @RestController
 @RequestMapping("/routines")
 class RoutineController(
-    private val createRoutineService: CreateRoutineService
+    private val createRoutineService: CreateRoutineService,
+    private val modifyRoutineService: ModifyRoutineService
 ) {
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
@@ -22,5 +28,14 @@ class RoutineController(
         request: CreateRoutineRequest
     ) {
         createRoutineService.execute(request)
+    }
+
+    @PatchMapping("/{routine-id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    fun modifyRoutine(
+        @PathVariable("routine-id") routineId: UUID,
+        @RequestBody @Valid request: ModifyRoutineRequest
+    ) {
+        modifyRoutineService.execute(routineId, request)
     }
 }

@@ -11,7 +11,7 @@ import team.jeonghokim.zakbu.domain.routine.domain.type.Status
 import java.time.DayOfWeek
 import java.time.LocalDate
 
-data class CreateRoutineRequest(
+data class RoutineRequest(
     @field:NotBlank(message = "루틴 이름은 필수 입력 값입니다.")
     @field:Size(max = 10, message = "루틴 이름은 10자 이하로 입력해주세요.")
     val routineName: String,
