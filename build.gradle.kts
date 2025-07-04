@@ -1,3 +1,5 @@
+import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+
 plugins {
     kotlin("jvm") version PluginVersions.JVM_VERSION
     kotlin("plugin.spring") version PluginVersions.KOTLIN_VERSION
@@ -46,7 +48,6 @@ dependencies {
     runtimeOnly(Dependencies.MYSQL_CONNECTOR)
 
     // 보안
-    implementation(Dependencies.SPRING_BOOT_STARTER_SECURITY)
 
     // 검증
     implementation(Dependencies.SPRING_BOOT_STARTER_VALIDATION)
@@ -64,6 +65,13 @@ dependencies {
 kotlin {
     compilerOptions {
         freeCompilerArgs.addAll("-Xjsr305=strict")
+    }
+}
+
+tasks.withType<KotlinCompile> {
+    kotlinOptions {
+        freeCompilerArgs += "-Xjsr305=strict"
+        jvmTarget = "17"
     }
 }
 
