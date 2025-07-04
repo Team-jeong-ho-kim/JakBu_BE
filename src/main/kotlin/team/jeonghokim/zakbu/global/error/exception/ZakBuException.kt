@@ -1,5 +1,5 @@
 package team.jeonghokim.zakbu.global.error.exception
 
 abstract class ZakBuException(
-    val errorCode: ErrorCode,
+    val errorCode: ErrorCode
 ) : RuntimeException()
