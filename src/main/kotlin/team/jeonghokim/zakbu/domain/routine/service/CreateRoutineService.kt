@@ -5,14 +5,14 @@ import org.springframework.transaction.annotation.Transactional
 import team.jeonghokim.zakbu.domain.period.domain.Period
 import team.jeonghokim.zakbu.domain.routine.domain.Routine
 import team.jeonghokim.zakbu.domain.routine.domain.repository.RoutineRepository
-import team.jeonghokim.zakbu.domain.routine.presentation.dto.request.CreateRoutineRequest
+import team.jeonghokim.zakbu.domain.routine.presentation.dto.request.RoutineRequest
 
 @Service
 class CreateRoutineService(
     private val routineRepository: RoutineRepository
 ) {
     @Transactional
-    fun execute(request: CreateRoutineRequest) {
+    fun execute(request: RoutineRequest) {
         val period =
             request.period.run {
                 Period(
