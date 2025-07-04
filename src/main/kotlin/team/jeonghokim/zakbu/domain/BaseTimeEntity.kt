@@ -6,7 +6,7 @@ import org.springframework.data.annotation.LastModifiedDate
 import java.time.LocalDateTime
 
 @MappedSuperclass
-abstract class BaseEntity(
+abstract class BaseTimeEntity(
     @CreatedDate
     val createdAt: LocalDateTime = LocalDateTime.now(),
     @LastModifiedDate

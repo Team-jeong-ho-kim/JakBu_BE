@@ -7,7 +7,7 @@ import jakarta.persistence.EnumType
 import jakarta.persistence.Enumerated
 import jakarta.persistence.JoinColumn
 import jakarta.persistence.OneToOne
-import team.jeonghokim.zakbu.domain.BaseEntity
+import team.jeonghokim.zakbu.domain.BaseTimeEntity
 import team.jeonghokim.zakbu.domain.period.domain.Period
 import team.jeonghokim.zakbu.domain.routine.domain.type.Importance
 import team.jeonghokim.zakbu.domain.routine.domain.type.Status
@@ -37,4 +37,4 @@ class Routine(
     @JoinColumn(name = "period_id", nullable = false)
     val period: Period
     // user entity와 연관관계 설정
-) : BaseEntity()
+) : BaseTimeEntity()
