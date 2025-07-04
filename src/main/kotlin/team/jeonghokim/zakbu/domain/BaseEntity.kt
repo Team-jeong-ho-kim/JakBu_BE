@@ -8,13 +8,13 @@ import org.hibernate.annotations.UuidGenerator
 import java.util.*
 
 @MappedSuperclass
-abstract class BaseEntity(
+abstract class BaseEntity() : BaseTimeEntity() {
     @Id
     @GeneratedValue(generator = "uuid2")
     @UuidGenerator
     @Column(
         columnDefinition = "BINARY(16)",
-        nullable = false,
+        nullable = false
     )
-    val id: UUID?,
-) : BaseTimeEntity()
+    lateinit var id: UUID
+}
