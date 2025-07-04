@@ -30,9 +30,9 @@ class RoutineController(
         createRoutineService.execute(request)
     }
 
-    @PatchMapping("/{routineId}")
+    @PatchMapping("/{routine-id}")
     fun modifyRoutine(
-        @PathVariable routineId: UUID,
+        @PathVariable("routine-id") routineId: UUID,
         @RequestBody @Valid request: ModifyRoutineRequest
     ) {
         modifyRoutineService.execute(routineId, request)
