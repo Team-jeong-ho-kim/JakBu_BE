@@ -11,7 +11,6 @@ import team.jeonghokim.zakbu.domain.BaseTimeEntity
 import team.jeonghokim.zakbu.domain.period.domain.Period
 import team.jeonghokim.zakbu.domain.routine.domain.type.Importance
 import team.jeonghokim.zakbu.domain.routine.domain.type.Status
-import team.jeonghokim.zakbu.domain.routine.presentation.dto.request.ModifyRoutineRequest
 import java.time.LocalDate
 
 @Entity(name = "tbl_routine")
