@@ -9,15 +9,13 @@ import team.jeonghokim.zakbu.domain.BaseUUIDEntity
 import team.jeonghokim.zakbu.domain.period.domain.converter.DayOfWeekConverter
 import team.jeonghokim.zakbu.domain.period.domain.type.Repeat
 import java.time.DayOfWeek
-import java.util.*
 
 @Entity(name = "tbl_period")
 class Period(
-    id: UUID? = null,
     @Column(name = "`repeat`", nullable = false, columnDefinition = "VARCHAR(7)")
     @Enumerated(EnumType.STRING)
     var repeat: Repeat = Repeat.DAILY,
     @Column(nullable = false, columnDefinition = "TINYINT(1)")
     @Convert(converter = DayOfWeekConverter::class)
     var activeDay: DayOfWeek,
-) : BaseUUIDEntity(id)
+) : BaseUUIDEntity()
