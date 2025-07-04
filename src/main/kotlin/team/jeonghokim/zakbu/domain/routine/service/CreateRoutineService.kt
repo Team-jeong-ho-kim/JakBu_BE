@@ -1,6 +1,7 @@
 package team.jeonghokim.zakbu.domain.routine.service
 
 import org.springframework.stereotype.Service
+import org.springframework.transaction.annotation.Transactional
 import team.jeonghokim.zakbu.domain.period.domain.Period
 import team.jeonghokim.zakbu.domain.routine.domain.Routine
 import team.jeonghokim.zakbu.domain.routine.domain.repository.RoutineRepository
@@ -10,6 +11,7 @@ import team.jeonghokim.zakbu.domain.routine.presentation.dto.request.CreateRouti
 class CreateRoutineService(
     private val routineRepository: RoutineRepository,
 ) {
+    @Transactional
     fun execute(request: CreateRoutineRequest) {
         val period = request.period.run {
             Period(
