@@ -39,7 +39,7 @@ class Routine(
     var isCompleted: Boolean = false,
 
     @Column(name = "tag", nullable = false, columnDefinition = "VARCHAR(10)")
-    val tag: String,
+    var tag: String,
 
     @OneToOne(cascade = [CascadeType.ALL], orphanRemoval = true)
     @JoinColumn(name = "period_id", nullable = false)
