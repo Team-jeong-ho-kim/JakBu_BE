@@ -45,4 +45,26 @@ class Routine(
     @JoinColumn(name = "period_id", nullable = false)
     var period: Period
     // user entity와 연관관계 설정
-) : BaseTimeEntity()
+) : BaseTimeEntity() {
+    fun modifyRoutine(
+        routineName: String,
+        goal: String,
+        iconUrl: String,
+        importance: Importance,
+        status: Status,
+        startDate: LocalDate,
+        isCompleted: Boolean,
+        tag: String,
+        period: Period
+    ) {
+        this.routineName = routineName
+        this.goal = goal
+        this.iconUrl = iconUrl
+        this.importance = importance
+        this.status = status
+        this.startDate = startDate
+        this.isCompleted = isCompleted
+        this.tag = tag
+        this.period = period
+        }
+}
