@@ -15,9 +15,6 @@ class User(
     @Column(unique = true, nullable = false, columnDefinition = "VARCHAR(255)")
     private val email: String,
 
-    @Column(nullable = false, columnDefinition = "CHAR(60)")
-    private val password: String,
-
     @Column(unique = true, nullable = false, columnDefinition = "VARCHAR(10)")
     private val userName: String,
 
