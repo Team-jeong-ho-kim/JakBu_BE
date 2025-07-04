@@ -43,6 +43,6 @@ class Routine(
 
     @OneToOne(cascade = [CascadeType.ALL], orphanRemoval = true)
     @JoinColumn(name = "period_id", nullable = false)
-    val period: Period
+    var period: Period
     // user entity와 연관관계 설정
 ) : BaseTimeEntity()
