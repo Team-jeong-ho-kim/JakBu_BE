@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController
 import team.jeonghokim.zakbu.domain.routine.presentation.dto.request.RoutineRequest
 import team.jeonghokim.zakbu.domain.routine.service.CreateRoutineService
 import team.jeonghokim.zakbu.domain.routine.service.DeleteRoutineService
+import team.jeonghokim.zakbu.domain.routine.service.DoneRoutineService
 import team.jeonghokim.zakbu.domain.routine.service.ModifyRoutineService
 import java.util.*
 
@@ -21,7 +22,8 @@ import java.util.*
 class RoutineController(
     private val createRoutineService: CreateRoutineService,
     private val modifyRoutineService: ModifyRoutineService,
-    private val deleteRoutineService: DeleteRoutineService
+    private val deleteRoutineService: DeleteRoutineService,
+    private val doneRoutineService: DoneRoutineService
 ) {
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
@@ -45,5 +47,11 @@ class RoutineController(
     @ResponseStatus(HttpStatus.NO_CONTENT)
     fun deleteRoutine(@PathVariable("routine-id") routineId: UUID) {
         deleteRoutineService.execute(routineId)
+    }
+
+    @PatchMapping("/{routine-id}/done")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    fun doneRoutine(@PathVariable("routine-id") routineId: UUID) {
+        doneRoutineService.execute(routineId)
     }
 }
