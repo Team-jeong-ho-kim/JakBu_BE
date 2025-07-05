@@ -67,4 +67,8 @@ class Routine(
         this.tag = tag
         this.period = period
     }
+
+    fun doneRoutine() {
+        this.isCompleted = true
+    }
 }
