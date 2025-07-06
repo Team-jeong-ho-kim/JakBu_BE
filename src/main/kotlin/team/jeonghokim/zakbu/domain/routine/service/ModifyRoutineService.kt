@@ -24,7 +24,7 @@ class ModifyRoutineService(
             importance = request.importance,
             status = request.status,
             startDate = request.startDate,
-            isCompleted = request.isCompleted,
+            completed = request.completed,
             tag = request.tag,
             period = request.period.run {
                 Period(
