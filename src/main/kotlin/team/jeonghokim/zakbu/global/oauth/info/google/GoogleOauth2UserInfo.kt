@@ -19,4 +19,6 @@ class GoogleOauth2UserInfo(
     override fun getEmail(): String = email
 
     override fun getUsername(): String = userName
+
+    override fun getProvider(): Oauth2Provider = Oauth2Provider.GOOGLE
 }
