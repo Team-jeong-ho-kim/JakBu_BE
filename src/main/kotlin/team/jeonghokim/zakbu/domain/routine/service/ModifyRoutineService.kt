@@ -17,22 +17,24 @@ class ModifyRoutineService(
     fun execute(routineId: UUID, request: RoutineRequest) {
         val routine = routineFacade.getRoutineById(routineId)
 
-        routine.modifyRoutine(
-            routineName = request.routineName,
-            goal = request.goal,
-            iconUrl = request.iconUrl,
-            importance = request.importance,
-            status = request.status,
-            startDate = request.startDate,
-            completed = request.completed,
-            tag = request.tag,
-            period = request.period.run {
-                Period(
-                    repeat = repeat,
-                    activeDay = activeDay
-                )
-            }
-        )
+        request.run {
+            routine.modifyRoutine(
+                routineName = routineName,
+                goal = goal,
+                iconUrl = iconUrl,
+                importance = importance,
+                status = status,
+                startDate = startDate,
+                completed = completed,
+                tag = tag,
+                period = period.run {
+                    Period(
+                        repeat = repeat,
+                        activeDay = activeDay
+                    )
+                }
+            )
+        }
 
         routineRepository.save(routine)
     }
