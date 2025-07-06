@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.ResponseStatus
 import org.springframework.web.bind.annotation.RestController
 import team.jeonghokim.zakbu.domain.routine.presentation.dto.request.RoutineRequest
-import team.jeonghokim.zakbu.domain.routine.presentation.dto.response.GetAllRoutineResponse
+import team.jeonghokim.zakbu.domain.routine.presentation.dto.response.GetRoutinesResponse
 import team.jeonghokim.zakbu.domain.routine.service.CreateRoutineService
 import team.jeonghokim.zakbu.domain.routine.service.DeleteRoutineService
 import team.jeonghokim.zakbu.domain.routine.service.DoneRoutineService
@@ -61,5 +61,5 @@ class RoutineController(
 
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
-    fun getAllRoutine(): GetAllRoutineResponse = getAllRoutineService.execute()
+    fun getAllRoutine(): GetRoutinesResponse = getAllRoutineService.execute()
 }
