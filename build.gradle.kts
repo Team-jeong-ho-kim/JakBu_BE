@@ -56,13 +56,14 @@ dependencies {
     implementation(Dependencies.JACKSON_MODULE_KOTLIN)
     implementation(Dependencies.ORG_JSON)
 
-	// JWT
-	implementation(Dependencies.JWT_API)
-	implementation(Dependencies.JWT_IMPL)
-	runtimeOnly(Dependencies.JWT_JACKSON)
+    // JWT
+    implementation(Dependencies.JWT_API)
+    implementation(Dependencies.JWT_IMPL)
+    runtimeOnly(Dependencies.JWT_JACKSON)
 
-	// OAUTH
-	implementation(Dependencies.OAUTH2_CLIENT)
+    // OAUTH
+    implementation(Dependencies.OAUTH2_CLIENT)
+}
 
 kotlin {
     compilerOptions {
