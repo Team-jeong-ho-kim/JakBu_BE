@@ -1,4 +1,4 @@
-package team.jeonghokim.zakbu.domain
+package team.jeonghokim.zakbu.global.entity
 
 import jakarta.persistence.Column
 import jakarta.persistence.GeneratedValue
