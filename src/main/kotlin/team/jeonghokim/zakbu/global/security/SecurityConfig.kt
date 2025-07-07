@@ -6,9 +6,15 @@ import org.springframework.context.annotation.Configuration
 import org.springframework.security.config.annotation.web.builders.HttpSecurity
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity
 import org.springframework.security.config.http.SessionCreationPolicy
+import org.springframework.security.oauth2.client.userinfo.OAuth2UserRequest
+import org.springframework.security.oauth2.client.userinfo.OAuth2UserService
+import org.springframework.security.oauth2.core.user.OAuth2User
 import org.springframework.security.web.SecurityFilterChain
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter
+import team.jeonghokim.zakbu.domain.auth.service.CustomOauth2UserService
 import team.jeonghokim.zakbu.global.error.GlobalExceptionFilter
+import team.jeonghokim.zakbu.global.oauth.handler.Oauth2FailureHandler
+import team.jeonghokim.zakbu.global.oauth.handler.Oauth2SuccessHandler
 import team.jeonghokim.zakbu.global.security.jwt.JwtTokenFilter
 import team.jeonghokim.zakbu.global.security.jwt.JwtTokenProvider
 
@@ -20,12 +26,23 @@ class SecurityConfig(
 ) {
     @Bean
     @Throws(Exception::class)
-    fun filterChain(http: HttpSecurity): SecurityFilterChain {
+    fun filterChain(http: HttpSecurity, customOauth2UserService: CustomOauth2UserService,
+                    successHandler: Oauth2SuccessHandler, failureHandler: Oauth2FailureHandler
+    ): SecurityFilterChain {
         return http
             .csrf { it.disable() }
             .cors { it.disable() }
             .formLogin { it.disable() }
             .sessionManagement { it.sessionCreationPolicy(SessionCreationPolicy.STATELESS) }
+            .oauth2Login{
+                it
+                    .redirectionEndpoint{ it.baseUri("/oauth2/{registration-id}") }
+                    .successHandler(successHandler)
+                    .failureHandler(failureHandler)
+                    .userInfoEndpoint { userInfo ->
+                        userInfo.userService(customOauth2UserService as OAuth2UserService<OAuth2UserRequest, OAuth2User>)
+                }
+            }
             .addFilterBefore(
                 JwtTokenFilter(jwtTokenProvider),
                 UsernamePasswordAuthenticationFilter::class.java
