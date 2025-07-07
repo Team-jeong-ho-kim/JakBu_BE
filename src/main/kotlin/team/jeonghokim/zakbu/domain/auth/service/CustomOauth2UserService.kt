@@ -35,22 +35,36 @@ class CustomOauth2UserService(
     }
 
     private fun process(request: OAuth2UserRequest, oAuth2User: OAuth2User): OAuth2User {
-        val accessToken: String = request.accessToken.tokenValue
-        val attributes: Map<String, Any> = oAuth2User.attributes
+        val oauth2UserInfo = createUserInfo(request, oAuth2User)
 
-        val oauth2UserInfo = Oauth2UserInfoFactory.getOauth2UserInfo(
-            registrationId = request.clientRegistration.registrationId,
-            accessToken = accessToken,
-            attributes = attributes
+        validateEmail(oauth2UserInfo)
+
+        val user = findUser(oauth2UserInfo)
+
+        return AuthDetails(
+            user,
+            oAuth2User.attributes,
+            isRegistered(oauth2UserInfo),
+            oauth2UserInfo.getProvider()
         )
+    }
 
+    private fun createUserInfo(request: OAuth2UserRequest, oauth2User: OAuth2User): Oauth2UserInfo {
+        return Oauth2UserInfoFactory.getOauth2UserInfo(
+            registrationId = request.clientRegistration.registrationId,
+            accessToken = request.accessToken.tokenValue,
+            attributes = oauth2User.attributes
+        )
+    }
+
+    private fun validateEmail(oauth2UserInfo: Oauth2UserInfo) {
         if (!StringUtils.hasText(oauth2UserInfo.getEmail())) {
             throw OAuth2AuthenticationException(ErrorMessage.EMAIL_NOT_FOUND_MESSAGE)
         }
+    }
 
-        val user: User? = userRepository.findByEmail(oauth2UserInfo.getEmail())
-
-        return AuthDetails(user, oAuth2User.attributes, isRegistered(oauth2UserInfo), oauth2UserInfo.getProvider())
+    private fun findUser(oauth2UserInfo: Oauth2UserInfo): User? {
+        return userRepository.findByEmail(oauth2UserInfo.getEmail())
     }
 
     private fun isRegistered(oauth2UserInfo: Oauth2UserInfo): Boolean {
