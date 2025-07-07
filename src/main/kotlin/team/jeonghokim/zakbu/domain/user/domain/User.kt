@@ -17,7 +17,7 @@ class User(
     private val userName: String,
 
     @Column(columnDefinition = "VARCHAR(20)")
-    private val promise: String ? = "",
+    private val promise: String? = null,
 
     @Enumerated(EnumType.STRING)
     @Column(nullable = false, columnDefinition = "VARCHAR(6)")
