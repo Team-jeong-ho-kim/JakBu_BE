@@ -1,15 +1,14 @@
 package team.jeonghokim.zakbu.domain.user.domain
 
-import jakarta.persistence.*
+import jakarta.persistence.Column
+import jakarta.persistence.Entity
+import jakarta.persistence.EnumType
+import jakarta.persistence.Enumerated
+import team.jeonghokim.zakbu.global.entity.BaseUUIDEntity
 import team.jeonghokim.zakbu.global.oauth.provider.Oauth2Provider
-import java.util.*
 
 @Entity(name = "tbl_user")
 class User(
-    @Id
-    @GeneratedValue
-    private val id: UUID? = null,
-
     @Column(unique = true, nullable = false, columnDefinition = "VARCHAR(255)")
     private val email: String,
 
@@ -25,7 +24,7 @@ class User(
 
     @Column(nullable = false, columnDefinition = "CHAR(255)")
     private val deviceToken: String = ""
-) {
+) : BaseUUIDEntity() {
     fun getEmail(): String {
         return email
     }
