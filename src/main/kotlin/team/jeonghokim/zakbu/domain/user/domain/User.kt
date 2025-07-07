@@ -17,14 +17,14 @@ class User(
     private val userName: String,
 
     @Column(columnDefinition = "VARCHAR(20)")
-    private val promise: String ?,
+    private val promise: String ? = "",
 
     @Enumerated(EnumType.STRING)
     @Column(nullable = false, columnDefinition = "VARCHAR(6)")
     private val oauthProvider: Oauth2Provider,
 
     @Column(nullable = false, columnDefinition = "CHAR(255)")
-    private val deviceToken: String
+    private val deviceToken: String = ""
 ) {
     fun getEmail(): String {
         return email
