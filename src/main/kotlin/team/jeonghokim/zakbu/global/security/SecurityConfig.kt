@@ -40,6 +40,11 @@ class SecurityConfig(
                         userInfo.userService(customOauth2UserService)
                 }
             }
+            .authorizeHttpRequests{
+                it
+                    .requestMatchers("/oauth2/**").permitAll()
+                    .anyRequest().authenticated()
+            }
             .addFilterBefore(
                 JwtTokenFilter(jwtTokenProvider),
                 UsernamePasswordAuthenticationFilter::class.java
