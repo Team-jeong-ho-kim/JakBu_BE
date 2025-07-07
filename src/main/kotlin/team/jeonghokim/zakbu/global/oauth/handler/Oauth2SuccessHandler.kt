@@ -5,6 +5,7 @@ import jakarta.servlet.http.HttpServletRequest
 import jakarta.servlet.http.HttpServletResponse
 import org.springframework.http.MediaType.APPLICATION_JSON_VALUE
 import org.springframework.security.core.Authentication
+import org.springframework.security.oauth2.core.OAuth2AuthenticationException
 import org.springframework.security.web.authentication.SimpleUrlAuthenticationSuccessHandler
 import org.springframework.stereotype.Component
 import team.jeonghokim.zakbu.domain.auth.presentation.dto.response.TokenResponse
@@ -24,7 +25,8 @@ class Oauth2SuccessHandler(
     override fun onAuthenticationSuccess(request: HttpServletRequest,
                                          response: HttpServletResponse, authentication: Authentication) {
         val authDetails: AuthDetails = authentication.principal as AuthDetails
-        val email: String = authDetails.attributes["email"] as String
+        val email: String = authDetails.attributes["email"] as? String
+            ?: throw OAuth2AuthenticationException("이메일 정보를 찾을 수 없습니다.")
 
         response.contentType = APPLICATION_JSON_VALUE
         response.characterEncoding = "UTF-8"
