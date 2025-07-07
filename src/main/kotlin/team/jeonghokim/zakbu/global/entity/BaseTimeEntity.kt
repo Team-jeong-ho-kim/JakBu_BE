@@ -9,6 +9,7 @@ import java.time.LocalDateTime
 abstract class BaseTimeEntity(
     @CreatedDate
     val createdAt: LocalDateTime = LocalDateTime.now(),
+
     @LastModifiedDate
     val modifiedAt: LocalDateTime = LocalDateTime.now()
 ) : BaseUUIDEntity()
