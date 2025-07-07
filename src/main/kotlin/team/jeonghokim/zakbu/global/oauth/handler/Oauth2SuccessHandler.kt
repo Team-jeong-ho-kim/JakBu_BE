@@ -48,6 +48,7 @@ class Oauth2SuccessHandler(
         } else {
             val responseBody = mapOf(
                 "is_registered" to false,
+                "oauth_provider" to authDetails.getOauth2Provider(),
                 "email" to email
             )
             response.writer.write(objectMapper.writeValueAsString(responseBody))

@@ -49,7 +49,7 @@ class CustomOauth2UserService(
 
         val user: User? = userRepository.findByEmail(oauth2UserInfo.getEmail())
 
-        return AuthDetails(user, oAuth2User.attributes, isRegistered(oauth2UserInfo))
+        return AuthDetails(user, oAuth2User.attributes, isRegistered(oauth2UserInfo), oauth2UserInfo.getProvider())
     }
 
     private fun isRegistered(oauth2UserInfo: Oauth2UserInfo): Boolean {
