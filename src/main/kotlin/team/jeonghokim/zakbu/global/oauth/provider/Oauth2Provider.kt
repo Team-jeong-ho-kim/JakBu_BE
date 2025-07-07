@@ -2,7 +2,8 @@ package team.jeonghokim.zakbu.global.oauth.provider
 
 enum class Oauth2Provider(val registrationId: String) {
     GOOGLE("google"),
-    KAKAO("kakao");
+    KAKAO("kakao"),
+    UNKNOWN("unknown");
 
     companion object {
         fun from(registrationId: String): Oauth2Provider? =
