@@ -1,7 +1,7 @@
 package team.jeonghokim.zakbu.global.oauth.factory
 
 import org.springframework.security.oauth2.core.OAuth2AuthenticationException
-import team.jeonghokim.zakbu.global.oauth.info.GoogleOauth2UserInfo
+import team.jeonghokim.zakbu.global.oauth.info.google.GoogleOauth2UserInfo
 import team.jeonghokim.zakbu.global.oauth.info.Oauth2UserInfo
 import team.jeonghokim.zakbu.global.oauth.provider.Oauth2Provider
 
