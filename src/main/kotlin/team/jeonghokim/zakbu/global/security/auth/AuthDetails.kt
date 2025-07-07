@@ -4,6 +4,7 @@ import org.springframework.security.core.GrantedAuthority
 import org.springframework.security.core.userdetails.UserDetails
 import org.springframework.security.oauth2.core.user.OAuth2User
 import team.jeonghokim.zakbu.domain.user.domain.User
+import team.jeonghokim.zakbu.global.error.ErrorMessage
 import team.jeonghokim.zakbu.global.oauth.provider.Oauth2Provider
 
 class AuthDetails(
@@ -27,7 +28,7 @@ class AuthDetails(
     override fun getUsername(): String {
         return user?.getEmail()
             ?: attributes["email"] as? String
-            ?: throw IllegalStateException("OAuth2 사용자 이메일이 존재하지 않습니다.")
+            ?: throw IllegalStateException(ErrorMessage.EMAIL_NOT_FOUND_MESSAGE)
     }
 
     override fun isAccountNonExpired(): Boolean {
@@ -58,6 +59,6 @@ class AuthDetails(
     override fun getName(): String {
         return user?.getEmail()
             ?: (attributes["email"] as? String)
-            ?: throw IllegalStateException("OAuth2 사용자 이메일이 존재하지 않습니다.")
+            ?: throw IllegalStateException(ErrorMessage.EMAIL_NOT_FOUND_MESSAGE)
     }
 }

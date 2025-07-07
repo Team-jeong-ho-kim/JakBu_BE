@@ -11,6 +11,7 @@ import org.springframework.transaction.annotation.Transactional
 import org.springframework.util.StringUtils
 import team.jeonghokim.zakbu.domain.user.domain.User
 import team.jeonghokim.zakbu.domain.user.domain.repository.UserRepository
+import team.jeonghokim.zakbu.global.error.ErrorMessage
 import team.jeonghokim.zakbu.global.oauth.factory.Oauth2UserInfoFactory
 import team.jeonghokim.zakbu.global.oauth.info.Oauth2UserInfo
 import team.jeonghokim.zakbu.global.security.auth.AuthDetails
@@ -44,7 +45,7 @@ class CustomOauth2UserService(
         )
 
         if (!StringUtils.hasText(oauth2UserInfo.getEmail())) {
-            throw OAuth2AuthenticationException("이메일을 찾을 수 없습니다.")
+            throw OAuth2AuthenticationException(ErrorMessage.EMAIL_NOT_FOUND_MESSAGE)
         }
 
         val user: User? = userRepository.findByEmail(oauth2UserInfo.getEmail())
