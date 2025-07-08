@@ -9,7 +9,7 @@ import team.jeonghokim.zakbu.domain.user.domain.repository.UserRepository
 @Service
 class AuthDetailsService(
     val userRepository: UserRepository
-): UserDetailsService {
+) : UserDetailsService {
     @Throws(UsernameNotFoundException::class)
     override fun loadUserByUsername(email: String): UserDetails {
         return userRepository.findByEmail(email)

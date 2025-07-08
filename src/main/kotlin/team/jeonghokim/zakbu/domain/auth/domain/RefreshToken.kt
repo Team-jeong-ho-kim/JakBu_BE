@@ -15,5 +15,4 @@ class RefreshToken(
 
     @TimeToLive
     private val expirationTime: Long
-) {
-}
+)

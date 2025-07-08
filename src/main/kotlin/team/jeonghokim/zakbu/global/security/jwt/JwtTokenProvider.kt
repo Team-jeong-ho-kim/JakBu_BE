@@ -9,8 +9,8 @@ import org.springframework.security.core.Authentication
 import org.springframework.security.core.userdetails.UserDetails
 import org.springframework.stereotype.Component
 import team.jeonghokim.zakbu.domain.auth.domain.RefreshToken
-import team.jeonghokim.zakbu.domain.auth.domain.exception.ExpiredJwtException
-import team.jeonghokim.zakbu.domain.auth.domain.exception.InvalidJwtException
+import team.jeonghokim.zakbu.global.exception.jwt.ExpiredJwtException
+import team.jeonghokim.zakbu.global.exception.jwt.InvalidJwtException
 import team.jeonghokim.zakbu.domain.auth.domain.repository.RefreshTokenRepository
 import team.jeonghokim.zakbu.global.security.auth.AuthDetailsService
 import java.util.*
@@ -29,7 +29,8 @@ class JwtTokenProvider(
 
     private val secretKeySpec = SecretKeySpec(
         jwtProperties.secretKey.toByteArray(),
-        SignatureAlgorithm.HS256.jcaName)
+        SignatureAlgorithm.HS256.jcaName
+    )
 
     private fun generateToken(email: String, type: String, exp: Long): String {
         return Jwts.builder()

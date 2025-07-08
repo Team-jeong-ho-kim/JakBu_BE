@@ -1,4 +1,4 @@
-package team.jeonghokim.zakbu.domain
+package team.jeonghokim.zakbu.global.entity
 
 import jakarta.persistence.MappedSuperclass
 import org.springframework.data.annotation.CreatedDate
@@ -9,6 +9,7 @@ import java.time.LocalDateTime
 abstract class BaseTimeEntity(
     @CreatedDate
     val createdAt: LocalDateTime = LocalDateTime.now(),
+
     @LastModifiedDate
     val modifiedAt: LocalDateTime = LocalDateTime.now()
 ) : BaseUUIDEntity()

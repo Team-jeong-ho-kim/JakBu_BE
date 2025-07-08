@@ -4,7 +4,7 @@ import jakarta.persistence.Column
 import jakarta.persistence.Entity
 import jakarta.persistence.EnumType
 import jakarta.persistence.Enumerated
-import team.jeonghokim.zakbu.domain.BaseUUIDEntity
+import team.jeonghokim.zakbu.global.entity.BaseUUIDEntity
 import team.jeonghokim.zakbu.domain.period.domain.type.Repeat
 import java.time.DayOfWeek
 

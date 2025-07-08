@@ -24,6 +24,9 @@ object Dependencies {
     const val JWT_IMPL = "io.jsonwebtoken:jjwt-impl:${DependencyVersion.JWT}"
     const val JWT_JACKSON = "io.jsonwebtoken:jjwt-jackson:${DependencyVersion.JWT}"
 
+    // OAUTH
+    const val OAUTH2_CLIENT = "org.springframework.boot:spring-boot-starter-oauth2-client"
+
     // Test
     const val JUNIT_PLATFORM_LAUNCHER = "org.junit.platform:junit-platform-launcher"
 }
