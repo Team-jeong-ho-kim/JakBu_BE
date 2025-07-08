@@ -26,7 +26,7 @@ class AuthDetails(
     }
 
     override fun getUsername(): String {
-        return user?.getEmail()
+        return user?.email
             ?: attributes["email"] as? String
             ?: throw EmailNotFoundException
     }
@@ -57,7 +57,7 @@ class AuthDetails(
     }
 
     override fun getName(): String {
-        return user?.getEmail()
+        return user?.email
             ?: (attributes["email"] as? String)
             ?: throw EmailNotFoundException
     }
