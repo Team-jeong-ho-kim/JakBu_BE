@@ -23,8 +23,11 @@ class Oauth2SuccessHandler(
     private val objectMapper: ObjectMapper
 ): SimpleUrlAuthenticationSuccessHandler() {
     @Throws(IOException::class)
-    override fun onAuthenticationSuccess(request: HttpServletRequest,
-                                         response: HttpServletResponse, authentication: Authentication) {
+    override fun onAuthenticationSuccess(
+        request: HttpServletRequest,
+        response: HttpServletResponse,
+        authentication: Authentication
+    ) {
         val authDetails: AuthDetails = authentication.principal as AuthDetails
         val email: String = authDetails.attributes["email"] as? String
             ?: throw OAuth2AuthenticationException(ErrorMessage.EMAIL_NOT_FOUND_MESSAGE)

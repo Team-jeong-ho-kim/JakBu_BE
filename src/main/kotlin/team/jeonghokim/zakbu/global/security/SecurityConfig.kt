@@ -23,8 +23,11 @@ class SecurityConfig(
 ) {
     @Bean
     @Throws(Exception::class)
-    fun filterChain(http: HttpSecurity, customOauth2UserService: CustomOauth2UserService,
-                    successHandler: Oauth2SuccessHandler, failureHandler: Oauth2FailureHandler
+    fun filterChain(
+        http: HttpSecurity,
+        customOauth2UserService: CustomOauth2UserService,
+        successHandler: Oauth2SuccessHandler,
+        failureHandler: Oauth2FailureHandler
     ): SecurityFilterChain {
         return http
             .csrf { it.disable() }
