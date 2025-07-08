@@ -8,5 +8,9 @@ enum class ErrorCode(
     EXPIRED_JWT(401, "Expired JWT"),
     INVALID_JWT(401, "Invalid JWT"),
 
+    // oauth
+    EMAIL_NOT_FOUND(401, "Email not found"),
+
+    // routine
     ROUTINE_NOT_FOUND(404, "Routine not found")
 }
