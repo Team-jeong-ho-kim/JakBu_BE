@@ -4,7 +4,7 @@ import org.springframework.security.core.GrantedAuthority
 import org.springframework.security.core.userdetails.UserDetails
 import org.springframework.security.oauth2.core.user.OAuth2User
 import team.jeonghokim.zakbu.domain.user.domain.User
-import team.jeonghokim.zakbu.global.exception.oauth.EmailNotFoundException
+import team.jeonghokim.zakbu.global.exception.oauth.OauthEmailNotFoundException
 import team.jeonghokim.zakbu.global.oauth.provider.Oauth2Provider
 
 class AuthDetails(
@@ -28,7 +28,7 @@ class AuthDetails(
     override fun getUsername(): String {
         return user?.email
             ?: attributes["email"] as? String
-            ?: throw EmailNotFoundException
+            ?: throw OauthEmailNotFoundException
     }
 
     override fun isAccountNonExpired(): Boolean {
@@ -59,6 +59,6 @@ class AuthDetails(
     override fun getName(): String {
         return user?.email
             ?: (attributes["email"] as? String)
-            ?: throw EmailNotFoundException
+            ?: throw OauthEmailNotFoundException
     }
 }

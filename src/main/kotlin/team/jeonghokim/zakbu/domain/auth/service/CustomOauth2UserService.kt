@@ -11,7 +11,7 @@ import org.springframework.transaction.annotation.Transactional
 import org.springframework.util.StringUtils
 import team.jeonghokim.zakbu.domain.user.domain.User
 import team.jeonghokim.zakbu.domain.user.domain.repository.UserRepository
-import team.jeonghokim.zakbu.global.exception.oauth.EmailNotFoundException
+import team.jeonghokim.zakbu.global.exception.oauth.OauthEmailNotFoundException
 import team.jeonghokim.zakbu.global.oauth.factory.Oauth2UserInfoFactory
 import team.jeonghokim.zakbu.global.oauth.info.Oauth2UserInfo
 import team.jeonghokim.zakbu.global.security.auth.AuthDetails
@@ -59,7 +59,7 @@ class CustomOauth2UserService(
 
     private fun validateEmail(oauth2UserInfo: Oauth2UserInfo) {
         if (!StringUtils.hasText(oauth2UserInfo.getEmail())) {
-            throw EmailNotFoundException
+            throw OauthEmailNotFoundException
         }
     }
 

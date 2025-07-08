@@ -9,7 +9,8 @@ enum class ErrorCode(
     INVALID_JWT(401, "Invalid JWT"),
 
     // oauth
-    EMAIL_NOT_FOUND(401, "Email not found"),
+    OAUTH_EMAIL_NOT_FOUND(401, "Email not found"),
+    OAUTH_USERNAME_NOT_FOUND(401, "Username not found"),
 
     // routine
     ROUTINE_NOT_FOUND(404, "Routine not found")
