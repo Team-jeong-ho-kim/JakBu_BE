@@ -12,7 +12,7 @@ class AuthDetails(
     private val attributes: Map<String, Any> = emptyMap(),
     private val isRegistered: Boolean = false,
     private val oauth2Provider: Oauth2Provider = Oauth2Provider.UNKNOWN
-): UserDetails, OAuth2User {
+) : UserDetails, OAuth2User {
     fun isRegistered() = isRegistered
 
     fun getOauth2Provider(): Oauth2Provider = oauth2Provider

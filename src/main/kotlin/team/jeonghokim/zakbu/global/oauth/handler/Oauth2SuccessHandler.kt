@@ -20,7 +20,7 @@ class Oauth2SuccessHandler(
     private val jwtTokenProvider: JwtTokenProvider,
     private val jwtProperties: JwtProperties,
     private val objectMapper: ObjectMapper
-): SimpleUrlAuthenticationSuccessHandler() {
+) : SimpleUrlAuthenticationSuccessHandler() {
     @Throws(IOException::class)
     override fun onAuthenticationSuccess(
         request: HttpServletRequest,

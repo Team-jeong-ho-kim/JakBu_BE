@@ -29,7 +29,8 @@ class JwtTokenProvider(
 
     private val secretKeySpec = SecretKeySpec(
         jwtProperties.secretKey.toByteArray(),
-        SignatureAlgorithm.HS256.jcaName)
+        SignatureAlgorithm.HS256.jcaName
+    )
 
     private fun generateToken(email: String, type: String, exp: Long): String {
         return Jwts.builder()

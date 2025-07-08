@@ -34,16 +34,16 @@ class SecurityConfig(
             .cors { it.disable() }
             .formLogin { it.disable() }
             .sessionManagement { it.sessionCreationPolicy(SessionCreationPolicy.STATELESS) }
-            .oauth2Login{
+            .oauth2Login {
                 it
-                    .redirectionEndpoint{ it.baseUri("/oauth2/{registration-id}") }
+                    .redirectionEndpoint { it.baseUri("/oauth2/{registration-id}") }
                     .successHandler(successHandler)
                     .failureHandler(failureHandler)
                     .userInfoEndpoint { userInfo ->
                         userInfo.userService(customOauth2UserService)
-                }
+                    }
             }
-            .authorizeHttpRequests{
+            .authorizeHttpRequests {
                 it
                     .requestMatchers("/oauth2/**").permitAll()
                     .anyRequest().authenticated()

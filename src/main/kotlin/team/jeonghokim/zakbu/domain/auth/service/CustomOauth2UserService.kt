@@ -19,7 +19,7 @@ import team.jeonghokim.zakbu.global.security.auth.AuthDetails
 @Service
 class CustomOauth2UserService(
     private val userRepository: UserRepository
-): DefaultOAuth2UserService() {
+) : DefaultOAuth2UserService() {
     @Transactional
     @Throws(OAuth2AuthenticationException::class)
     override fun loadUser(userRequest: OAuth2UserRequest): OAuth2User {

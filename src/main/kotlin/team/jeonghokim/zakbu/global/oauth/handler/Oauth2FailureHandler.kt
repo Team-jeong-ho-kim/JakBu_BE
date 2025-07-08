@@ -9,9 +9,13 @@ import org.springframework.stereotype.Component
 import java.io.IOException
 
 @Component
-class Oauth2FailureHandler: SimpleUrlAuthenticationFailureHandler() {
+class Oauth2FailureHandler : SimpleUrlAuthenticationFailureHandler() {
     @Throws(IOException::class)
-    override fun onAuthenticationFailure(request: HttpServletRequest, response: HttpServletResponse, exception: AuthenticationException) {
+    override fun onAuthenticationFailure(
+        request: HttpServletRequest,
+        response: HttpServletResponse,
+        exception: AuthenticationException
+    ) {
         response.contentType = MediaType.APPLICATION_JSON_VALUE
         response.characterEncoding = "UTF-8"
         response.writer.write(exception.message.toString())
