@@ -46,7 +46,8 @@ class RoutineController(
     @ResponseStatus(HttpStatus.NO_CONTENT)
     fun modifyRoutine(
         @PathVariable("routine-id") routineId: UUID,
-        @RequestBody @Valid request: RoutineRequest
+        @RequestBody @Valid
+        request: RoutineRequest
     ) {
         modifyRoutineService.execute(routineId, request)
     }

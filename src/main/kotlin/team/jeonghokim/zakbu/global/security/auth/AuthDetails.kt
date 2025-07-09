@@ -6,7 +6,7 @@ import team.jeonghokim.zakbu.domain.user.domain.User
 
 class AuthDetails(
     private val user: User
-): UserDetails {
+) : UserDetails {
     override fun getAuthorities(): Collection<GrantedAuthority?> {
         return emptyList()
     }

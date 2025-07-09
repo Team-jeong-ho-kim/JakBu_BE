@@ -25,6 +25,6 @@ class GetDailyRoutinesService(
                         it.completed
                     )
                 }
-            )
+        )
     }
 }
