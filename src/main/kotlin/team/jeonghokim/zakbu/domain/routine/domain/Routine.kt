@@ -7,7 +7,7 @@ import jakarta.persistence.EnumType
 import jakarta.persistence.Enumerated
 import jakarta.persistence.JoinColumn
 import jakarta.persistence.OneToOne
-import team.jeonghokim.zakbu.domain.BaseTimeEntity
+import team.jeonghokim.zakbu.global.entity.BaseTimeEntity
 import team.jeonghokim.zakbu.domain.period.domain.Period
 import team.jeonghokim.zakbu.domain.routine.domain.type.Importance
 import team.jeonghokim.zakbu.domain.routine.domain.type.Status
