@@ -18,7 +18,7 @@ import team.jeonghokim.zakbu.domain.routine.service.CreateRoutineService
 import team.jeonghokim.zakbu.domain.routine.service.DeleteRoutineService
 import team.jeonghokim.zakbu.domain.routine.service.DoneRoutineService
 import team.jeonghokim.zakbu.domain.routine.service.GetAllRoutineService
-import team.jeonghokim.zakbu.domain.routine.service.GetDailyRoutinesService
+import team.jeonghokim.zakbu.domain.routine.service.GetRoutinesByDateService
 import team.jeonghokim.zakbu.domain.routine.service.ModifyRoutineService
 import java.time.LocalDate
 import java.util.*
@@ -31,7 +31,7 @@ class RoutineController(
     private val deleteRoutineService: DeleteRoutineService,
     private val doneRoutineService: DoneRoutineService,
     private val getAllRoutineService: GetAllRoutineService,
-    private val getDailyRoutinesService: GetDailyRoutinesService
+    private val getRoutinesByDateService: GetRoutinesByDateService
 ) {
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
@@ -70,5 +70,5 @@ class RoutineController(
 
     @GetMapping(params = ["date"])
     @ResponseStatus(HttpStatus.OK)
-    fun getDailyRoutines(@RequestParam date: LocalDate): GetRoutinesResponse = getDailyRoutinesService.execute(date)
+    fun getDailyRoutines(@RequestParam date: LocalDate): GetRoutinesResponse = getRoutinesByDateService.execute(date)
 }

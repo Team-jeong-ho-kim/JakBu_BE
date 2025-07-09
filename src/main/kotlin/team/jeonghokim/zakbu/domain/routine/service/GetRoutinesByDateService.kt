@@ -8,7 +8,7 @@ import team.jeonghokim.zakbu.domain.routine.presentation.dto.response.RoutineRes
 import java.time.LocalDate
 
 @Service
-class GetDailyRoutinesService(
+class GetRoutinesByDateService(
     private val routineRepository: RoutineRepository
 ) {
     @Transactional(readOnly = true)
