@@ -5,5 +5,5 @@ import java.util.*
 data class RoutineResponse(
     val routineId: UUID,
     val routineName: String,
-    val isCompleted: Boolean
+    val completed: Boolean
 )
