@@ -11,7 +11,7 @@ import org.springframework.transaction.annotation.Transactional
 import org.springframework.util.StringUtils
 import team.jeonghokim.zakbu.domain.user.domain.User
 import team.jeonghokim.zakbu.domain.user.domain.repository.UserRepository
-import team.jeonghokim.zakbu.global.exception.oauth.OauthEmailNotFoundException
+import team.jeonghokim.zakbu.global.exception.oauth.EmailNotFoundException
 import team.jeonghokim.zakbu.global.oauth.factory.Oauth2UserInfoFactory
 import team.jeonghokim.zakbu.global.oauth.info.Oauth2UserInfo
 import team.jeonghokim.zakbu.global.security.auth.AuthDetails
@@ -41,9 +41,11 @@ class CustomOauth2UserService(
 
         val user = findUser(oauth2UserInfo)
 
+        val attributes = buildOAuthAttributes(request, oAuth2User, oauth2UserInfo)
+
         return AuthDetails(
             user,
-            oAuth2User.attributes,
+            attributes,
             isRegistered(oauth2UserInfo),
             oauth2UserInfo.getProvider()
         )
@@ -59,12 +61,26 @@ class CustomOauth2UserService(
 
     private fun validateEmail(oauth2UserInfo: Oauth2UserInfo) {
         if (!StringUtils.hasText(oauth2UserInfo.getEmail())) {
-            throw OauthEmailNotFoundException
+            throw EmailNotFoundException
         }
     }
 
     private fun findUser(oauth2UserInfo: Oauth2UserInfo): User? {
         return userRepository.findByEmail(oauth2UserInfo.getEmail())
+    }
+
+    private fun buildOAuthAttributes(
+        request: OAuth2UserRequest,
+        oAuth2User: OAuth2User,
+        oauth2UserInfo: Oauth2UserInfo
+    ): Map<String, Any> {
+        val attributes = oAuth2User.attributes.toMutableMap()
+
+        if (request.clientRegistration.registrationId == "kakao") {
+            attributes["email"] = oauth2UserInfo.getEmail()
+        }
+
+        return attributes
     }
 
     private fun isRegistered(oauth2UserInfo: Oauth2UserInfo): Boolean {
