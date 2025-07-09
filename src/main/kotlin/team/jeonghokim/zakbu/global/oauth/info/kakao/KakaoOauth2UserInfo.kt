@@ -8,6 +8,7 @@ import team.jeonghokim.zakbu.global.oauth.info.Oauth2UserInfo
 import team.jeonghokim.zakbu.global.oauth.provider.Oauth2Provider
 
 class KakaoOauth2UserInfo(
+    private val accessToken: String,
     private val attributes: Map<String, Any> = emptyMap()
 ) : Oauth2UserInfo {
     private val kakaoAccount = attributes["kakao_account"] as? Map<*, *>
