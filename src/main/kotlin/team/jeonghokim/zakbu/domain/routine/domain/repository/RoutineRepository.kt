@@ -6,5 +6,5 @@ import java.util.UUID
 
 interface RoutineRepository : JpaRepository<Routine, UUID> {
     fun findRoutineById(routineId: UUID): Routine?
-    fun findAllByCompletedFalse(): List<Routine>?
+    fun findAllByCompletedFalse(): List<Routine>
 }
