@@ -1,4 +1,4 @@
-package team.jeonghokim.zakbu.domain
+package team.jeonghokim.zakbu.global.entity
 
 import jakarta.persistence.MappedSuperclass
 import org.springframework.data.annotation.CreatedDate
