@@ -1,4 +1,4 @@
-package team.jeonghokim.zakbu.domain.auth.domain.exception
+package team.jeonghokim.zakbu.global.exception.jwt
 
 import team.jeonghokim.zakbu.global.error.exception.ErrorCode
 import team.jeonghokim.zakbu.global.error.exception.ZakBuException
