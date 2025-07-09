@@ -3,6 +3,7 @@ package team.jeonghokim.zakbu.global.oauth.factory
 import org.springframework.security.oauth2.core.OAuth2AuthenticationException
 import team.jeonghokim.zakbu.global.oauth.info.google.GoogleOauth2UserInfo
 import team.jeonghokim.zakbu.global.oauth.info.Oauth2UserInfo
+import team.jeonghokim.zakbu.global.oauth.info.kakao.KakaoOauth2UserInfo
 import team.jeonghokim.zakbu.global.oauth.provider.Oauth2Provider
 
 object Oauth2UserInfoFactory {
@@ -16,7 +17,7 @@ object Oauth2UserInfoFactory {
 
         return when (provider) {
             Oauth2Provider.GOOGLE -> GoogleOauth2UserInfo(accessToken, attributes)
-            // 카카오 추가
+            Oauth2Provider.KAKAO -> KakaoOauth2UserInfo(accessToken, attributes)
             else -> throw OAuth2AuthenticationException("지원하지 않는 OAuth2 제공자: $provider")
         }
     }
