@@ -15,14 +15,15 @@ class GetDailyRoutinesService(
     @Transactional(readOnly = true)
     fun execute(date: LocalDate): GetRoutinesResponse {
         val routines = routineRepository.findAllByCompletedFalse() ?: throw RoutineNotFoundException
+        routines.forEach { println(it) }
         return GetRoutinesResponse(
             routines.filter { it.startDate <= date }
                 .sortedBy { it.startDate }
-                .map { routine ->
+                .map {
                     RoutineResponse(
-                        routine.id,
-                        routine.routineName,
-                        routine.completed
+                        it.id,
+                        it.routineName,
+                        it.completed
                     )
                 }
             )
