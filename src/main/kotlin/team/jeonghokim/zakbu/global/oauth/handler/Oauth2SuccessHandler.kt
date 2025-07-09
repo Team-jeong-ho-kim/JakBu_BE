@@ -8,7 +8,7 @@ import org.springframework.security.core.Authentication
 import org.springframework.security.web.authentication.SimpleUrlAuthenticationSuccessHandler
 import org.springframework.stereotype.Component
 import team.jeonghokim.zakbu.domain.auth.presentation.dto.response.TokenResponse
-import team.jeonghokim.zakbu.global.exception.oauth.OauthEmailNotFoundException
+import team.jeonghokim.zakbu.global.exception.oauth.EmailNotFoundException
 import team.jeonghokim.zakbu.global.security.auth.AuthDetails
 import team.jeonghokim.zakbu.global.security.jwt.JwtProperties
 import team.jeonghokim.zakbu.global.security.jwt.JwtTokenProvider
@@ -29,7 +29,7 @@ class Oauth2SuccessHandler(
     ) {
         val authDetails: AuthDetails = authentication.principal as AuthDetails
         val email: String = authDetails.attributes["email"] as? String
-            ?: throw OauthEmailNotFoundException
+            ?: throw EmailNotFoundException
 
         response.contentType = APPLICATION_JSON_VALUE
         response.characterEncoding = "UTF-8"

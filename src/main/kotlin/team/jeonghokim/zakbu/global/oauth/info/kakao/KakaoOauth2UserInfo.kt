@@ -1,9 +1,9 @@
 package team.jeonghokim.zakbu.global.oauth.info.kakao
 
-import team.jeonghokim.zakbu.global.exception.oauth.OauthEmailNotFoundException
-import team.jeonghokim.zakbu.global.exception.oauth.OauthKakaoAccountNotFoundException
-import team.jeonghokim.zakbu.global.exception.oauth.OauthKakaoProfileNotFoundException
-import team.jeonghokim.zakbu.global.exception.oauth.OauthUserNameNotFoundException
+import team.jeonghokim.zakbu.global.exception.oauth.EmailNotFoundException
+import team.jeonghokim.zakbu.global.exception.oauth.KakaoAccountNotFoundException
+import team.jeonghokim.zakbu.global.exception.oauth.KakaoProfileNotFoundException
+import team.jeonghokim.zakbu.global.exception.oauth.UserNameNotFoundException
 import team.jeonghokim.zakbu.global.oauth.info.Oauth2UserInfo
 import team.jeonghokim.zakbu.global.oauth.provider.Oauth2Provider
 
@@ -12,16 +12,16 @@ class KakaoOauth2UserInfo(
     private val attributes: Map<String, Any> = emptyMap()
 ) : Oauth2UserInfo {
     private val kakaoAccount = attributes["kakao_account"] as? Map<*, *>
-        ?: throw OauthKakaoAccountNotFoundException
+        ?: throw KakaoAccountNotFoundException
 
     private val kakaoProfile = kakaoAccount["profile"] as? Map<*, *>
-        ?: throw OauthKakaoProfileNotFoundException
+        ?: throw KakaoProfileNotFoundException
 
     private val email: String = kakaoAccount["email"] as? String
-        ?: throw OauthEmailNotFoundException
+        ?: throw EmailNotFoundException
 
     private val userName: String = kakaoProfile["nickname"] as? String
-        ?: throw OauthUserNameNotFoundException
+        ?: throw UserNameNotFoundException
 
     override fun getEmail(): String {
         return email
