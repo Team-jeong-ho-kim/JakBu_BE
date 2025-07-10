@@ -3,7 +3,6 @@ package team.jeonghokim.zakbu.domain.routine.service
 import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
 import team.jeonghokim.zakbu.domain.period.domain.Period
-import team.jeonghokim.zakbu.domain.routine.domain.repository.RoutineRepository
 import team.jeonghokim.zakbu.domain.routine.facade.RoutineFacade
 import team.jeonghokim.zakbu.domain.routine.presentation.dto.request.RoutineRequest
 import java.util.*
