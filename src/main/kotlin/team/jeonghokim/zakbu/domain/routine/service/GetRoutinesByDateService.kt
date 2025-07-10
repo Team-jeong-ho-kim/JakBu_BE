@@ -14,7 +14,6 @@ class GetRoutinesByDateService(
     @Transactional(readOnly = true)
     fun execute(date: LocalDate): GetRoutinesResponse {
         val routines = routineRepository.findAllByCompletedFalse()
-        routines.forEach { println(it) }
         return GetRoutinesResponse(
             routines.filter { it.startDate <= date }
                 .sortedBy { it.startDate }
