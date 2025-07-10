@@ -36,7 +36,7 @@ class Routine(
     var startDate: LocalDate,
 
     @Column(name = "is_completed", nullable = false)
-    var isCompleted: Boolean = false,
+    var completed: Boolean = false,
 
     @Column(name = "tag", nullable = false, columnDefinition = "VARCHAR(10)")
     var tag: String,
@@ -53,7 +53,7 @@ class Routine(
         importance: Importance,
         status: Status,
         startDate: LocalDate,
-        isCompleted: Boolean,
+        completed: Boolean,
         tag: String,
         period: Period
     ) {
@@ -63,12 +63,12 @@ class Routine(
         this.importance = importance
         this.status = status
         this.startDate = startDate
-        this.isCompleted = isCompleted
+        this.completed = completed
         this.tag = tag
         this.period = period
     }
 
     fun doneRoutine() {
-        this.isCompleted = true
+        this.completed = true
     }
 }

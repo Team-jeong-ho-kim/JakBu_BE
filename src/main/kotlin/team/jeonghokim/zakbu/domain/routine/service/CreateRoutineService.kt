@@ -30,7 +30,7 @@ class CreateRoutineService(
                     importance = importance,
                     status = status,
                     startDate = startDate,
-                    isCompleted = isCompleted,
+                    completed = completed,
                     tag = tag,
                     period = period
                 )

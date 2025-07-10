@@ -9,15 +9,18 @@ import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RequestMapping
+import org.springframework.web.bind.annotation.RequestParam
 import org.springframework.web.bind.annotation.ResponseStatus
 import org.springframework.web.bind.annotation.RestController
 import team.jeonghokim.zakbu.domain.routine.presentation.dto.request.RoutineRequest
-import team.jeonghokim.zakbu.domain.routine.presentation.dto.response.GetAllRoutineResponse
+import team.jeonghokim.zakbu.domain.routine.presentation.dto.response.GetRoutinesResponse
 import team.jeonghokim.zakbu.domain.routine.service.CreateRoutineService
 import team.jeonghokim.zakbu.domain.routine.service.DeleteRoutineService
 import team.jeonghokim.zakbu.domain.routine.service.DoneRoutineService
 import team.jeonghokim.zakbu.domain.routine.service.GetAllRoutineService
+import team.jeonghokim.zakbu.domain.routine.service.GetRoutinesByDateService
 import team.jeonghokim.zakbu.domain.routine.service.ModifyRoutineService
+import java.time.LocalDate
 import java.util.*
 
 @RestController
@@ -27,7 +30,8 @@ class RoutineController(
     private val modifyRoutineService: ModifyRoutineService,
     private val deleteRoutineService: DeleteRoutineService,
     private val doneRoutineService: DoneRoutineService,
-    private val getAllRoutineService: GetAllRoutineService
+    private val getAllRoutineService: GetAllRoutineService,
+    private val getRoutinesByDateService: GetRoutinesByDateService
 ) {
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
@@ -62,5 +66,9 @@ class RoutineController(
 
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
-    fun getAllRoutine(): GetAllRoutineResponse = getAllRoutineService.execute()
+    fun getAllRoutine(): GetRoutinesResponse = getAllRoutineService.execute()
+
+    @GetMapping(params = ["date"])
+    @ResponseStatus(HttpStatus.OK)
+    fun getDailyRoutines(@RequestParam date: LocalDate): GetRoutinesResponse = getRoutinesByDateService.execute(date)
 }

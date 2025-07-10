@@ -36,7 +36,7 @@ data class RoutineRequest(
     @field:NotNull(message = "시작일은 필수 입력 값입니다.")
     val startDate: LocalDate,
 
-    val isCompleted: Boolean = false,
+    val completed: Boolean = false,
 
     @field:NotBlank(message = "태그는 필수 입력 값입니다.")
     val tag: String,
