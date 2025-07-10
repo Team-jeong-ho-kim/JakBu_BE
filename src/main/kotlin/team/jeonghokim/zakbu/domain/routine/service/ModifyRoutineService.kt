@@ -10,8 +10,7 @@ import java.util.*
 
 @Service
 class ModifyRoutineService(
-    private val routineFacade: RoutineFacade,
-    private val routineRepository: RoutineRepository
+    private val routineFacade: RoutineFacade
 ) {
     @Transactional
     fun execute(routineId: UUID, request: RoutineRequest) {
@@ -35,7 +34,5 @@ class ModifyRoutineService(
                 }
             )
         }
-
-        routineRepository.save(routine)
     }
 }
