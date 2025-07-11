@@ -8,11 +8,11 @@ import org.springframework.data.redis.core.index.Indexed
 @RedisHash
 class RefreshToken(
     @Id
-    private val email: String,
+    val email: String,
 
     @Indexed
-    private val refreshToken: String,
+    val refreshToken: String,
 
     @TimeToLive
-    private val expirationTime: Long
+    val expirationTime: Long
 )
