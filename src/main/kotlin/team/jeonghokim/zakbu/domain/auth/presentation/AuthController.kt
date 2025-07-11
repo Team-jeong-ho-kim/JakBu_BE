@@ -11,7 +11,7 @@ import team.jeonghokim.zakbu.domain.auth.service.SignupService
 class AuthController(
     private val signupService: SignupService
 ) {
-    @PostMapping
+    @PostMapping("/signup")
     @ResponseStatus(HttpStatus.CREATED)
     fun signup(
         @RequestBody @Valid
