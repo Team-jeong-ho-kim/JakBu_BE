@@ -9,7 +9,11 @@ enum class ErrorCode(
     INVALID_JWT(401, "Invalid JWT"),
 
     // oauth
-    EMAIL_NOT_FOUND(401, "Email not found"),
+    OAUTH_EMAIL_NOT_FOUND(401, "Email not found"),
+    OAUTH_USERNAME_NOT_FOUND(401, "Username not found"),
+    OAUTH_KAKAO_ACCOUNT_NOT_FOUND(401, "Kakao account not found"),
+    OAUTH_KAKAO_PROFILE_NOT_FOUND(401, "Kakao profile not found"),
+    OAUTH_UNSUPPORTED_PROVIDER(400, "Unsupported provider for authentication"),
 
     // routine
     ROUTINE_NOT_FOUND(404, "Routine not found")
