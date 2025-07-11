@@ -15,6 +15,9 @@ enum class ErrorCode(
     OAUTH_KAKAO_PROFILE_NOT_FOUND(401, "Kakao profile not found"),
     OAUTH_UNSUPPORTED_PROVIDER(400, "Unsupported provider for authentication"),
 
+    // user
+    ALREADY_USER_EXISTS(409, "User already exists"),
+
     // routine
     ROUTINE_NOT_FOUND(404, "Routine not found")
 }
