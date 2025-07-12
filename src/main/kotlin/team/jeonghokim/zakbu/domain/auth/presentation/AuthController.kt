@@ -15,7 +15,7 @@ class AuthController(
     private val signupService: SignupService,
     private val reissueService: ReissueService
 ) {
-    @PostMapping("/signup")
+    @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     fun signup(
         @RequestBody @Valid
