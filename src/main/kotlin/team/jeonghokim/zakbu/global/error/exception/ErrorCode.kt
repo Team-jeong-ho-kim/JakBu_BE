@@ -17,6 +17,7 @@ enum class ErrorCode(
 
     // user
     ALREADY_USER_EXISTS(409, "User already exists"),
+    USER_NOT_FOUND(404, "User not found"),
 
     // routine
     ROUTINE_NOT_FOUND(404, "Routine not found")
