@@ -13,7 +13,7 @@ class SignupService(
 ) {
     @Transactional
     fun execute(request: SignupRequest) {
-        if (userRepository.existsUsersByEmail(request.email)) {
+        if (userRepository.existsUserByEmail(request.email)) {
             throw AlreadyUserExistsException
         }
 
