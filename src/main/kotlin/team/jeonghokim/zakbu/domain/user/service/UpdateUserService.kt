@@ -4,6 +4,7 @@ import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
 import team.jeonghokim.zakbu.domain.user.domain.repository.UserRepository
 import team.jeonghokim.zakbu.domain.user.exception.EmailAlreadyInUseException
+import team.jeonghokim.zakbu.domain.user.exception.UserNameAlreadyInUseException
 import team.jeonghokim.zakbu.domain.user.facade.UserFacade
 import team.jeonghokim.zakbu.domain.user.presentation.dto.request.UpdateUserRequest
 
@@ -16,14 +17,22 @@ class UpdateUserService(
     fun execute(request: UpdateUserRequest) {
         val user = userFacade.getUser()
 
-        validateEmail(request.email)
+        validateEmail(user.email, request.email)
+
+        validateUserName(user.userName, request.userName)
 
         user.update(request.email, request.userName, request.promise)
     }
 
-    private fun validateEmail(email: String) {
-        if (userRepository.existsUserByEmail(email)) {
+    private fun validateEmail(xEmail: String, newEmail: String) {
+        if (xEmail != newEmail && userRepository.existsUserByEmail(newEmail)) {
             throw EmailAlreadyInUseException
+        }
+    }
+
+    private fun validateUserName(xUserName: String, newUserName: String) {
+        if (xUserName != newUserName && userRepository.existsUserByUsername(newUserName)) {
+            throw UserNameAlreadyInUseException
         }
     }
 }
