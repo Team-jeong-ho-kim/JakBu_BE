@@ -19,6 +19,8 @@ enum class ErrorCode(
     // user
     ALREADY_USER_EXISTS(409, "User already exists"),
     USER_NOT_FOUND(404, "User not found"),
+    EMAIL_ALREADY_IN_USE(404, "Email already in use"),
+    USERNAME_ALREADY_IN_USE(404, "Username already in use"),
 
     // routine
     ROUTINE_NOT_FOUND(404, "Routine not found")
