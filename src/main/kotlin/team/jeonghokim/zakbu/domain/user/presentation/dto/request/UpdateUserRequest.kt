@@ -1,9 +1,11 @@
 package team.jeonghokim.zakbu.domain.user.presentation.dto.request
 
+import jakarta.validation.constraints.Email
 import jakarta.validation.constraints.NotBlank
 import jakarta.validation.constraints.Size
 
 data class UpdateUserRequest(
+    @field:Email
     @field:NotBlank
     val email: String,
 
