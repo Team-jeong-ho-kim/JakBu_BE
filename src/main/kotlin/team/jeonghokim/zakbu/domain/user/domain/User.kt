@@ -28,7 +28,7 @@ class User(
     fun update(
         email: String,
         userName: String,
-        promise: String
+        promise: String?
     ) {
         this.email = email
         this.userName = userName

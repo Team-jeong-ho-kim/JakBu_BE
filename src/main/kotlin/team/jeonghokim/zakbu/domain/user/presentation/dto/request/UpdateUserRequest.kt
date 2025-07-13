@@ -14,5 +14,5 @@ data class UpdateUserRequest(
     val userName: String,
 
     @field:Size(max = 20)
-    val promise: String
+    val promise: String?
 )
