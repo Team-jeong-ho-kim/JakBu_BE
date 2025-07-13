@@ -23,5 +23,9 @@ class User(
     val oauthProvider: Oauth2Provider,
 
     @Column(nullable = false, columnDefinition = "CHAR(255)")
-    val deviceToken: String = ""
-) : BaseUUIDEntity()
+    var deviceToken: String = ""
+) : BaseUUIDEntity() {
+    fun setToken(token: String) {
+        this.deviceToken = token
+    }
+}
