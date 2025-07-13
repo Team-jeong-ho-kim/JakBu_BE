@@ -24,4 +24,14 @@ class User(
 
     @Column(nullable = false, columnDefinition = "CHAR(255)")
     var deviceToken: String = ""
-) : BaseUUIDEntity()
+) : BaseUUIDEntity() {
+    fun update(
+        email: String,
+        userName: String,
+        promise: String
+    ) {
+        this.email = email
+        this.userName = userName
+        this.promise = promise
+    }
+}
