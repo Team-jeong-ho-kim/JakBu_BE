@@ -7,6 +7,7 @@ enum class ErrorCode(
     // jwt
     EXPIRED_JWT(401, "Expired JWT"),
     INVALID_JWT(401, "Invalid JWT"),
+    REFRESH_TOKEN_NOT_FOUND(404, "Refresh Token not found"),
 
     // oauth
     OAUTH_EMAIL_NOT_FOUND(401, "Email not found"),
