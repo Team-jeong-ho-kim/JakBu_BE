@@ -42,7 +42,7 @@ class ReissueService(
             ?: throw InvalidJwtException
     }
 
-    private fun getRefreshToken(parseToken: String) : RefreshToken {
+    private fun getRefreshToken(parseToken: String): RefreshToken {
         return refreshTokenRepository.findByRefreshToken(parseToken)
             ?: throw RefreshTokenNotFoundException
     }

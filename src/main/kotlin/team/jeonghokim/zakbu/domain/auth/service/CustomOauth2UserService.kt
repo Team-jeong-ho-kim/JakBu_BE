@@ -84,6 +84,6 @@ class CustomOauth2UserService(
     }
 
     private fun isRegistered(oauth2UserInfo: Oauth2UserInfo): Boolean {
-        return userRepository.existsUsersByEmail(oauth2UserInfo.getEmail())
+        return userRepository.existsUserByEmail(oauth2UserInfo.getEmail())
     }
 }
