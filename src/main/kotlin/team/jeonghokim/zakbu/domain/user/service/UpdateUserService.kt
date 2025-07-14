@@ -31,7 +31,7 @@ class UpdateUserService(
     }
 
     private fun validateUserName(xUserName: String, newUserName: String) {
-        if (xUserName != newUserName && userRepository.existsUserByUsername(newUserName)) {
+        if (xUserName != newUserName && userRepository.existsUserByUserName(newUserName)) {
             throw UserNameAlreadyInUseException
         }
     }
