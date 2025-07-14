@@ -34,4 +34,8 @@ class User(
         this.userName = userName
         this.promise = promise
     }
+
+    fun setToken(token: String) {
+        this.deviceToken = token
+    }
 }
